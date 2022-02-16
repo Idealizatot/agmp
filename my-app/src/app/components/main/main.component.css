@@ -1,0 +1,16 @@
+:host {
+    background-color: rgb(223, 223, 223);
+}
+
+.main {
+    height: 100%;
+    padding: 30px 50px;
+}
+
+.list {
+    list-style: none;
+}
+
+.list-item:not(:last-child) {
+    padding-bottom: 50px;
+}

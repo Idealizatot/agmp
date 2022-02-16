@@ -1,0 +1,31 @@
+.course {
+    height: 170px;
+    padding: 10px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+}
+
+.course__infoBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.course__titleBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.course_title {
+
+}
+
+.course_description {
+
+}
+
+.course__settings {
+    width: 230px;
+}

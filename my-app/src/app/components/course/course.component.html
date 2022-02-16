@@ -1,0 +1,18 @@
+<div class="course">
+    <div class="course__infoBlock">
+        <div class="course__titleBlock">
+            <h3 class="course__title">
+                {{course.title}}
+            </h3>
+            <div>{{course.courseDuration | date : 'h:mm'}}</div>
+            <div>{{course.creationDate | date : 'mediumDate'}}</div>
+        </div>
+        <p class="course__description">
+            {{course.description}}
+        </p>
+    </div>
+    <div class="course__settings">
+        <button>Edit</button>
+        <button (click)="delete()">Delete</button>
+    </div>
+</div>
