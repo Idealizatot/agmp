@@ -8,8 +8,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
-import { CourseComponent } from './components/course/course.component';
 import { SearchComponent } from './components/search/search.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { BodyComponent } from './components/body/body.component';
+
+import { CourseModule } from './modules/course/course.module';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,15 @@ import { SearchComponent } from './components/search/search.component';
     FooterComponent,
     MainComponent,
     BreadcrumbsComponent,
-    CourseComponent,
     SearchComponent,
+    NotFoundComponent,
+    BodyComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule, 
+    CourseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,10 @@
+<main class="main">
+    <app-search></app-search>
+    <button>+ Add new course</button>
+    <ul class="list">
+        <li *ngFor="let item of courses; trackBy: trackByItems" class="list-item">
+            <app-course (onDelete)="deleteCourse($event)" [course]="item"></app-course>
+        </li>
+    </ul>
+    <button (click)="loadCourse()">Load more</button>    
+</main>
