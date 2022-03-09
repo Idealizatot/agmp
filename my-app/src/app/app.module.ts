@@ -13,6 +13,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BodyComponent } from './components/body/body.component';
 
 import { CourseModule } from './modules/course/course.module';
+import { DataVisualizationDirective } from './directives/data-visualization/data-visualization.directive';
+import { OrderByPipe } from './pipes/orderBy/order-by.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { CourseModule } from './modules/course/course.module';
     SearchComponent,
     NotFoundComponent,
     BodyComponent,
+    DataVisualizationDirective,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,

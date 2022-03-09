@@ -29,3 +29,13 @@
 .course__settings {
     width: 230px;
 }
+
+.freshCourse .course {
+    border: 2px solid greenyellow;
+}
+
+.upcomingCourse .course {
+    border: 2px solid blue;
+}
+
+.topRated {background-color: rgb(0, 225, 255);}

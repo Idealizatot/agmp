@@ -1,8 +1,9 @@
-<div class="course">
+<div [ngClass]="{topRated:course.topRated}" class="course">
     <div class="course__infoBlock">
         <div class="course__titleBlock">
             <h3 class="course__title">
-                {{course.title}}
+                {{course.title | uppercase}}
+                <span *ngIf="course.topRated">*</span>
             </h3>
             <div>{{course.courseDuration | date : 'h:mm'}}</div>
             <div>{{course.creationDate | date : 'mediumDate'}}</div>
