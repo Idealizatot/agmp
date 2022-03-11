@@ -1,4 +1,4 @@
-<div [ngClass]="{topRated:course.topRated}" class="course">
+<div [class.topRated]="course.topRated" [appDataVisualization]="course.creationDate" class="course">
     <div class="course__infoBlock">
         <div class="course__titleBlock">
             <h3 class="course__title">

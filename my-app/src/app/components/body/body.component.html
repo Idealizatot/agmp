@@ -1,11 +1,11 @@
 <main class="main">
-    <app-search></app-search>
+    <app-search (onSearch)="setSearctWord($event)"></app-search>
     <button>+ Add new course</button>    
     <div *ngIf="!courses.length; else list">NO DATA. FEEL FREE TO EDD NEW COURSE</div>
     <ng-template #list>
         <ul #list class="list">
-            <li *ngFor="let item of courses | orderBy; trackBy: trackByItems" class="list-item">
-                <app-course (onDelete)="deleteCourse($event)" [course]="item" [appDataVisualization]="item.creationDate"></app-course>
+            <li *ngFor="let item of courses | filterByWord: searchWord | orderBy; trackBy: trackByItems" class="list-item">
+                <app-course (onDelete)="deleteCourse($event)" [course]="item"></app-course>
             </li>
         </ul>
         <button (click)="loadCourse()">Load more</button>    

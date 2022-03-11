@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Course } from '../../course';
-import { OrderByPipe } from 'src/app/pipes/orderBy/order-by.pipe';
+import { Course } from 'src/app/course';
 
 const courses: Course[] = [
   {
@@ -37,6 +36,8 @@ export class BodyComponent implements OnInit {
 
   courses: Course[];
 
+  searchWord = '';
+
   constructor() {
     this.courses = courses;
   }
@@ -46,6 +47,10 @@ export class BodyComponent implements OnInit {
 
   trackByItems(index: number, item: Course): number {
     return item.id;
+  }
+
+  setSearctWord(word: string) {
+    this.searchWord = word;
   }
 
   loadCourse() {

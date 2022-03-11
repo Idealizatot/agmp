@@ -20,7 +20,4 @@ export class DataVisualizationDirective implements OnInit{
       this.className = 'upcomingCourse';
     }
   }
-
-  
-
 }

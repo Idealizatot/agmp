@@ -30,12 +30,12 @@
     width: 230px;
 }
 
-.freshCourse .course {
-    border: 2px solid greenyellow;
+.upcomingCourse {
+    border: solid 2px blue;
 }
 
-.upcomingCourse .course {
-    border: 2px solid blue;
+.freshCourse {
+    border: solid 2px greenyellow;
 }
 
 .topRated {background-color: rgb(0, 225, 255);}

@@ -1,10 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { Course } from '../../course';
 
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
-  styleUrls: ['./course.component.css']
+  styleUrls: ['./course.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CourseComponent implements OnInit {
   @Input() course!: Course;
