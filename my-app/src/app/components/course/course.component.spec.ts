@@ -33,7 +33,6 @@ describe('CourseComponent', () => {
   });
 
   it('should contain input data', () => {
-    
     fixture.detectChanges();
     const titleHTML = fixture.nativeElement as HTMLElement;
     expect(titleHTML.querySelector('h3')?.textContent).toContain('a new component');

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Course } from '../../course';
+import { ConfirmPopupComponent } from '../confirm-popup/confirm-popup.component';
 
 @Component({
   selector: 'app-course',
@@ -12,13 +14,29 @@ export class CourseComponent implements OnInit {
 
   @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   delete() {
-    this.onDelete.emit(this.course.id);
+    const dialogRef = this.dialog.open(ConfirmPopupComponent, {
+      data: {
+        onClickNo: () => {
+          console.log('callbackNo');
+          dialogRef.close();
+        },
+        onClickYes: () => {
+          console.log('callbackYes');
+          this.onDelete.emit(this.course.id);
+          dialogRef.close();
+        }
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`popup close ${result}`);
+    })
+    // this.onDelete.emit(this.course.id);
   }
 
 }

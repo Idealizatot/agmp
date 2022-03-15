@@ -1,48 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { Course } from 'src/app/course';
 
-const courses: Course[] = [
-  {
-    id: 1,
-    title: 'WILDLIFE WATCH',
-    description: 'THE BEST OF NATIONAL GEOGRAPHIC DELIVERED TO YOUR INBOX',
-    courseDuration: new Date(),
-    creationDate: new Date('08-08-2022')
-  },
-  {
-    id: 2,
-    title: 'Source of mysterious global tsunami found near Antarctica',
-    description: 'A rare, multi-part earthquake that disturbed waters in three oceans is helping scientists understand how different types of quakes can trigger tsunamis.',
-    courseDuration: new Date(),
-    creationDate: new Date('02-02-2022'),
-    topRated: true
-  },
-  {
-    id: 3,
-    title: 'Most U.S. wolves are listed as endangered—again. Here’s why.',
-    description: 'A new court decision protects wolves, except in the Northern Rockies, just over a year after they were delisted. What’s next in the chaotic world of wolf conservation?',
-    courseDuration: new Date(),
-    creationDate: new Date('08-08-2021')
-  }
-];
-
+import { CoursesService } from 'src/app/services/courses/courses.service';
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css']
 })
-export class BodyComponent implements OnInit {
+export class BodyComponent implements OnInit, OnDestroy {
 
-  courses: Course[];
-
+  courses: Course[] = [];
+  coursesSubscription: Subscription = new Subscription();
   searchWord = '';
 
-  constructor() {
-    this.courses = courses;
+  constructor(private courseService: CoursesService) {
   }
 
   ngOnInit(): void {
+    this.courses = this.courseService.getСourseList();
+    this.coursesSubscription = this.courseService.coursesUpdated.subscribe(() => {
+      this.courses = this.courseService.getСourseList();
+    });
+
+    // for test
+    setTimeout(() => {
+      console.log('5000');
+      this.courseService.createCourse({
+        id: 12345,
+        title: 'test4',
+        description: 'description',
+        courseDuration: new Date(),
+        creationDate: new Date(),
+      });
+    }, 5000);
   }
 
   trackByItems(index: number, item: Course): number {
@@ -58,7 +50,11 @@ export class BodyComponent implements OnInit {
   }
 
   deleteCourse(data: number) {
+    this.courseService.removeCourse(data);
     console.log(`parent deletes course with id = ${data}`);
   }
 
+  ngOnDestroy(): void {
+      this.coursesSubscription.unsubscribe();
+  }
 }
