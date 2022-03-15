@@ -19,6 +19,7 @@ import { CourseModule } from './modules/course/course.module';
 import { OrderByPipe } from './pipes/orderBy/order-by.pipe';
 import { FilterByWordPipe } from './pipes/filterByWord/filter-by-word.pipe';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthComponent } from './components/auth/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     BodyComponent,
     OrderByPipe,
     FilterByWordPipe,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
