@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CourseComponent } from 'src/app/components/course/course.component';
 import { DataVisualizationDirective } from 'src/app/directives/data-visualization/data-visualization.directive';
 import { ConfirmPopupComponent } from 'src/app/components/confirm-popup/confirm-popup.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,10 @@ import { ConfirmPopupComponent } from 'src/app/components/confirm-popup/confirm-
   ],
   imports: [
     CommonModule,
+    MaterialModule,
   ],
   exports: [
-    CourseComponent
+    CourseComponent,
   ]
 })
 export class CourseModule { }

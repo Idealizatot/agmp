@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog'
 
+import { MaterialModule } from './modules/material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -40,10 +40,10 @@ import { NewCourseComponent } from './components/new-course/new-course.component
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MaterialModule,
     FormsModule, 
     CourseModule,
     NoopAnimationsModule,
-    MatDialogModule
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
