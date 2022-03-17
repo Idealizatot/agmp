@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { Course } from 'src/app/course';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Course } from 'src/app/course';
 })
 export class CoursesService {
 
-  coursesUpdated = new Subject();
+  subjectCourses: BehaviorSubject<Course[]> = new BehaviorSubject([] as Course[]);
   сourses: Course[] = [
     {
       id: 1,
@@ -32,20 +32,21 @@ export class CoursesService {
       creationDate: new Date('08-08-2021')
     }
   ];
+  
+  constructor() {
+    this.subjectCourses.next(this.сourses);
+  }
 
-  constructor() { }
-
-  getСourseList(): Course[] {
-    return [...this.сourses];
+  getСourseList(): BehaviorSubject<Course[]> {
+    return this.subjectCourses;
   }
 
   createCourse(course: Course): void {
-    this.сourses.push(course);
-    this.coursesUpdated.next(true);
+    this.subjectCourses.next([...this.subjectCourses.getValue(), course]);
   }
 
   getCourse(id: number): Course | undefined {
-    return this.сourses.find((item) => item.id === id);
+    return this.subjectCourses.getValue().find((item) => item.id === id);
   }
 
   updateCourse(id: number, updCourse: Course): void {
@@ -53,8 +54,7 @@ export class CoursesService {
   }
 
   removeCourse(id: number): void {
-    this.сourses = this.сourses.filter((item) => item.id !== id);
-    this.coursesUpdated.next(true);
+    this.subjectCourses.next(this.subjectCourses.getValue().filter((item) => item.id !== id));
   }
 
 }

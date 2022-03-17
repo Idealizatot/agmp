@@ -19,11 +19,11 @@ export class BodyComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.courses = this.courseService.getСourseList();
-    this.coursesSubscription = this.courseService.coursesUpdated.subscribe(() => {
-      this.courses = this.courseService.getСourseList();
+    this.coursesSubscription = this.courseService.getСourseList().subscribe((data) => {
+      console.log('subscribe', data);
+      this.courses = data;
     });
-
+    
     // for test
     setTimeout(() => {
       console.log('5000');
@@ -51,10 +51,9 @@ export class BodyComponent implements OnInit, OnDestroy {
 
   deleteCourse(data: number) {
     this.courseService.removeCourse(data);
-    console.log(`parent deletes course with id = ${data}`);
   }
 
   ngOnDestroy(): void {
-      this.coursesSubscription.unsubscribe();
+    this.coursesSubscription.unsubscribe();
   }
 }

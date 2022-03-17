@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { AppRoutingModule } from './app-routing.module';
+import { CourseModule } from './modules/course/course.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -15,12 +18,11 @@ import { BodyComponent } from './components/body/body.component';
 
 import { CoursesService } from './services/courses/courses.service';
 
-import { CourseModule } from './modules/course/course.module';
 import { OrderByPipe } from './pipes/orderBy/order-by.pipe';
 import { FilterByWordPipe } from './pipes/filterByWord/filter-by-word.pipe';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './components/auth/auth/auth.component';
 import { NewCourseComponent } from './components/new-course/new-course.component';
+import { EditCourseComponent } from './components/edit-course/edit-course.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { NewCourseComponent } from './components/new-course/new-course.component
     FilterByWordPipe,
     AuthComponent,
     NewCourseComponent,
+    EditCourseComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { NewCourseComponent } from './components/new-course/new-course.component
     FormsModule, 
     CourseModule,
     NoopAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
