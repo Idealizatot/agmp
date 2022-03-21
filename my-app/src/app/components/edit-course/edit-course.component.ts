@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Course } from 'src/app/course';
 import { CoursesService } from 'src/app/services/courses/courses.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { CoursesService } from 'src/app/services/courses/courses.service';
 })
 export class EditCourseComponent implements OnInit {
 
+  course?: Course;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -17,7 +20,13 @@ export class EditCourseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.snapshot.data
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (typeof id === 'string') {
+        this.course = this.service.getCourse(+id);
+      }
+      console.log(this.course);
+    });
   }
 
 }

@@ -1,6 +1,6 @@
 <main class="main">
     <app-search (onSearch)="setSearctWord($event)"></app-search>
-    <button>+ Add new course</button>    
+    <button mat-raised-button color="accent">+ Add new course</button>    
     <div *ngIf="!courses.length; else list">NO DATA. FEEL FREE TO EDD NEW COURSE</div>
     <ng-template #list>
         <ul #list class="list">
