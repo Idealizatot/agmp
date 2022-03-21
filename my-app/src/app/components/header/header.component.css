@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    height: 50px;
+    padding: 0 50px;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.account {
+    display: flex;
+    gap: 10px;
+}

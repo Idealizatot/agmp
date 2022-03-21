@@ -1,0 +1,11 @@
+<mat-card class="searchForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Search word</mat-label>
+        <input matInput type="text" [(ngModel)]="searchText">
+        <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <button (click)="search()" mat-raised-button color="accent">Search</button>
+</mat-card>

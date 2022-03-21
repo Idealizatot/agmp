@@ -1,0 +1,41 @@
+<div [class.topRated]="course.topRated" [appDataVisualization]="course.creationDate" class="course">
+    <mat-grid-list cols="5" rowHeight="4:1">
+        <mat-grid-tile colspan="3">
+            <div class="fullBlock">
+                <h3>
+                    {{course.title | uppercase}}
+                    <span *ngIf="course.topRated">*</span>
+                </h3>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2">
+            <div class="fullBlock">
+                <mat-grid-list cols="2" rowHeight="100%">
+                    <mat-grid-tile colspan="1">{{course.courseDuration | date : 'h:mm'}}</mat-grid-tile>
+                    <mat-grid-tile colspan="1">{{course.creationDate | date : 'mediumDate'}}</mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4" rowspan="3">
+            <div class="fullBlock description">
+                {{course.description}}
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="3">
+            <div class="fullBlock">
+                <mat-grid-list cols="2" rowHeight="100%">
+                    <mat-grid-tile colspan="1">
+                        <a [routerLink]="['/courses/', course.id]" mat-fab>
+                            <mat-icon>edit</mat-icon>
+                        </a>  
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="1">
+                        <button (click)="delete()" mat-fab color="warn">
+                            <mat-icon>delete</mat-icon>
+                        </button> 
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
