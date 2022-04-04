@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { OrderByPipe } from 'src/app/pipes/orderBy/order-by.pipe';
 
 import { Course } from 'src/app/course';
 

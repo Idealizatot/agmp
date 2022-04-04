@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FilterByWordPipe } from 'src/app/pipes/filterByWord/filter-by-word.pipe';
+import { OrderByPipe } from 'src/app/pipes/orderBy/order-by.pipe';
 
 import { BodyComponent } from './body.component';
 
@@ -8,7 +10,7 @@ describe('BodyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BodyComponent ]
+      declarations: [ BodyComponent, OrderByPipe, FilterByWordPipe ]
     })
     .compileComponents();
   });

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { CourseComponent } from './course.component';
-import { Course } from '../../course'
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 describe('CourseComponent', () => {
   let component: CourseComponent;
@@ -10,7 +10,12 @@ describe('CourseComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CourseComponent ]
+      imports: [MatDialogModule],
+      declarations: [ CourseComponent ],
+      providers: [
+        {provide: MAT_DIALOG_DATA, useValue: {}},
+        {provide: MatDialogRef, useValue: {}}
+      ]
     })
     .compileComponents();
   });
@@ -35,7 +40,7 @@ describe('CourseComponent', () => {
   it('should contain input data', () => {
     fixture.detectChanges();
     const titleHTML = fixture.nativeElement as HTMLElement;
-    expect(titleHTML.querySelector('h3')?.textContent).toContain('a new component');
+    expect(titleHTML.querySelector('h3')?.textContent?.toLocaleLowerCase()).toContain('a new component');
   });
 
   it('should contain clickable button', () => {

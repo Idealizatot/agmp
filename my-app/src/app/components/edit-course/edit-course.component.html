@@ -1,14 +1,24 @@
-<mat-grid-list cols="1" rowHeight="fit">
-    <mat-grid-tile>
-        <app-header></app-header>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <app-breadcrumbs></app-breadcrumbs>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <form action=""></form>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <app-footer></app-footer>
-    </mat-grid-tile>
-</mat-grid-list>
+    
+<app-header></app-header>
+
+<app-breadcrumbs></app-breadcrumbs>
+
+<form [formGroup]="form" class="form">
+    
+    <mat-form-field appearance="fill">
+        <input matInput formControlName="title" type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <input matInput formControlName="courseDuration" type="time">
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="topRated" class="example-margin">Slide me!</mat-slide-toggle>
+  
+</form>
+
+<app-footer></app-footer>
